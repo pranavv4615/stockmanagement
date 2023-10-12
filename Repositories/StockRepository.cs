@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace StockOrderManagement.Data;
+using StockOrderManagement.Models;
 
 public class StockRepository : IStockRepository
 {

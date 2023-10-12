@@ -1,0 +1,51 @@
+@using StockOrderManagement.Models
+
+
+<h1>Stocks</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<head>
+    <script>
+        function showAlert() {
+            alert("Stock with non-zero order value cannot be deleted.");
+        }
+    </script>
+</head>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Order Value</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @item.OrderValue
+                </td>
+                <td>
+                    @if (ViewBag.ShowAlert == "0")
+                    {
+                        <a href="#" onclick="showAlert()">Delete</a>
+                    }
+                    else
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

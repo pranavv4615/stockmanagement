@@ -35,7 +35,18 @@ public class StockController : Controller
 
     public IActionResult Delete(int id)
     {
-        _stockService.DeleteStock(id);
+        bool stockDeleted = _stockService.DeleteStock(id);
+
+        if (stockDeleted)
+        {
+            // Stock was deleted successfully
+            ViewBag.ShowAlert = "1";
+        }
+        else
+        {
+            // Stock couldn't be deleted
+            ViewBag.ShowAlert = "0";
+        }
         return RedirectToAction("Index");
     }
 }

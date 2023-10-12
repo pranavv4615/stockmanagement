@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using StockOrderManagement.Models;
 
 public interface IStockRepository
 {

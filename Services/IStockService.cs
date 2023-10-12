@@ -7,7 +7,7 @@ public interface IStockService
     Stock GetStockById(int id);
     void AddStock(Stock stock);
     void UpdateStock(Stock stock);
-    void DeleteStock(int id);
+    bool DeleteStock(int id);
     bool CheckStockAvailability(int stockId, int orderQty);
     void UpdateStockQuantity(int stockId, int quantityChange);
 }

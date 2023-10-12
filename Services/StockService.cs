@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using StockOrderManagement.Models;
 
 public class StockService : IStockService
 {
@@ -32,23 +33,17 @@ public class StockService : IStockService
         _stockRepository.UpdateStock(stock);
     }
 
-    public void DeleteStock(int id)
+    public bool DeleteStock(int id)
     {
         var stock = GetStockById(id);
-        if (stock != null)
+        if (stock.OrderValue == 0)
         {
-            if (stock.OrderValue == 0)
-            {
-                _stockRepository.DeleteStock(id);
-            }
-            else
-            {
-                throw new InvalidOperationException("Stock with non-zero order value cannot be deleted.");
-            }
+            _stockRepository.DeleteStock(id);
+            return true;
         }
         else
         {
-            throw new InvalidOperationException("Stock not found.");
+            return false;
         }
     }
 
