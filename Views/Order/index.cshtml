@@ -1,11 +1,10 @@
 @using StockOrderManagement.Models
 
 
-<a href="/Order/Index">
-    <h2>Click here to go to Orders</h2>
+<a href="/Stock/Index">
+    <h2>Click here to go to Stocks</h2>
 </a>
-<h1>Stocks</h1>
-
+<h1>Order</h1>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -20,9 +19,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Order Value</th>
+            <th>CustomerName</th>
+            <th>StockId</th>
+            <th>OrderQty</th>
             <th></th>
         </tr>
     </thead>
@@ -31,13 +30,13 @@
         {
             <tr>
                 <td>
-                    @item.Name
+                    @item.CustomerName
                 </td>
                 <td>
-                    @item.Quantity
+                    @item.StockId
                 </td>
                 <td>
-                    @item.OrderValue
+                    @item.OrderQty
                 </td>
                 <td>
                     @if (ViewBag.ShowAlert == "0")

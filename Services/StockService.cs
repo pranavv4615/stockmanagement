@@ -23,7 +23,6 @@ public class StockService : IStockService
 
     public void AddStock(Stock stock)
     {
-        // Implement validation logic here, e.g., check for duplicates, required fields, etc.
         _stockRepository.AddStock(stock);
     }
 

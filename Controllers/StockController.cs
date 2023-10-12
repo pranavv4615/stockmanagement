@@ -25,6 +25,20 @@ public class StockController : Controller
     [HttpPost]
     public IActionResult Create(Stock stock)
     {
+        if (stock == null)
+        {
+            throw new ArgumentNullException("stock", "Stock object cannot be null.");
+        }
+
+        if (string.IsNullOrWhiteSpace(stock.Name))
+        {
+            throw new ArgumentException("Stock Name is required.", nameof(stock.Name));
+        }
+
+        if (stock.Quantity <= 0)
+        {
+            throw new ArgumentException("Stock Quantity must be a positive value.", nameof(stock.Quantity));
+        }
         if (ModelState.IsValid)
         {
             _stockService.AddStock(stock);
